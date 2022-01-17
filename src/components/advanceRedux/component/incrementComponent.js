@@ -5,7 +5,7 @@ import {incrementAction} from '../action'
 const IncrementComponent = ({increment,dispatchInc})=>{
     return (
         <div>
-            <button onClick={dispatchInc}>Increment Me</button>
+            <button onClick={()=>dispatchInc(5)}>Increment Me</button>
             <p>{increment}</p>
         </div>
     )
@@ -19,7 +19,7 @@ const mapStateToProps = ({increment})=>{
 
 const mapDispatchToProps = (dispatch)=>{
     return {
-        dispatchInc: ()=>dispatch(incrementAction())
+        dispatchInc: (amt)=>dispatch(incrementAction(amt))
     }
 }
 

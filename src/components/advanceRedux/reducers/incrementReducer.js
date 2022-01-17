@@ -1,6 +1,6 @@
 let incrementReducer = (state=0,action)=>{
     if(action.type === 'INC') {
-       return state = state + 1;
+       return state = state + action.payload;
     } else {
         return state
     }
