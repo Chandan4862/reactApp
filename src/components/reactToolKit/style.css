@@ -1,9 +1,0 @@
-.container  {
-    display: flex;
-    flex-wrap: wrap-reverse;
-}
-
-.item {
-    align-self: auto;
-    border-color: brown;
-  }
