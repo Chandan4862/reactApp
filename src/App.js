@@ -1,6 +1,7 @@
-import {Route,Link} from 'react-router-dom';
+import {Route, Switch,Link, Redirect} from 'react-router-dom';
 import Home from './components/home';
 import About from './components/about';
+import Data from './components/data';
 
 function App() {
   return (
@@ -12,12 +13,21 @@ function App() {
           <li><Link to="/about">About</Link></li>
         </ul>
       </div>
-      <Route path="/home" >
-        <Home></Home>
-      </Route>
-      <Route path="/about" >
-        <About></About>
-      </Route>
+      {/* <Switch> */}
+        <Route path="/" exact>
+            <Redirect to="/home"></Redirect>
+        </Route>
+        <Route path="/home/:id">
+            <Data></Data>
+        </Route>
+        <Route path="/home" exact>
+          <Home></Home>
+        </Route>
+        <Route path="/about" >
+          <About></About>
+        </Route>
+      {/* </Switch> */}
+
     </div>
   );
 }
