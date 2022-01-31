@@ -1,10 +1,14 @@
 import React from "react";
-import {useParams} from 'react-router-dom';
+import QuoteForm from "../components/quotes/QuoteForm"
 
 function NewQuote(){
-    let param = useParams()
+    let addQuote = (quote) =>{
+        console.log('author',quote.author)
+    }
     return(
-        <h1>New Quote!: {param.id}</h1>
+       <>
+        <QuoteForm onAddQuote = {addQuote}></QuoteForm>
+       </>
     )
 }
 
