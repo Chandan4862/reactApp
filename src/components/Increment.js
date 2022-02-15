@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import action from "../redux/actions/index";
 import {getIncTwoCounter,getIncOneCounter} from "../redux/reducers";
 
-const Increment = ({counter_one,counter_two,d_inc_two,d_inc_one})=>{
+const Increment = ({counter_one,counter_two,d_inc_two,d_inc_one,d_global_inc_one,d_global_inc_two})=>{
     return (
       <div>
         <table>
           <tbody>
             <tr>
               <td>
-                <button onClick={() => d_inc_one()}>Increment By 1</button>
+                <button onClick={() => {d_inc_one();d_global_inc_one()}}>Increment By 1</button>
               </td>
               <td>
                 <p>Increment Value : {counter_one}</p>
@@ -18,7 +18,7 @@ const Increment = ({counter_one,counter_two,d_inc_two,d_inc_one})=>{
             </tr>
             <tr>
               <td>
-                <button onClick={() => d_inc_two()}>Increment By 2</button>
+                <button onClick={() => {d_inc_two(); d_global_inc_two()}}>Increment By 2</button>
               </td>
               <td>
                 <p>Increment Value : {counter_two}</p>
@@ -39,7 +39,10 @@ let mapStateToProp = (state)=>{
 let mapDispatchToProp = (dispatch)=>{
     return {
         d_inc_one: ()=> dispatch(action('INC_ONE',{})),
-        d_inc_two: ()=> dispatch(action('INC_TWO',{}))
+        d_inc_two: ()=> dispatch(action('INC_TWO',{})),
+        d_global_inc_one: ()=> dispatch(action('GLOBAL_INC_ONE')),
+        d_global_inc_two: ()=> dispatch(action('GLOBAL_INC_TWO'))
+
     }
 }
 

@@ -1,17 +1,12 @@
 import { Provider } from 'react-redux';
-import HelloWorld from './components/HelloWorld';
 import store from './redux/store';
-import Increment from './components/Increment';
-import Decrement from './components/Decrement';
-
+import Main from './components/Main';
 function App() {
   return (
     <Provider store={store}>
     <div>
-      <h2>Let's get started!</h2>
-      <HelloWorld></HelloWorld>
-      <Increment></Increment>
-      <Decrement></Decrement>
+      <h2>Redux State</h2>
+      <Main/>
     </div>
     </Provider>
   );
