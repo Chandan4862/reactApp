@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
-const HelloWorld = ()=>{
+const HelloWorld = () => {
+  const [status, setStatus] = useState(null);
+  let timer = null;
+  const handleChange = () => {
+    window.clearTimeout(timer);
+    setStatus("typing...");
+  };
 
-    return (
-        <div>
-            Hello World!
-        </div>
-    )
-}
+  const stop = () => {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => setStatus(null), 500);
+  };
 
-export default HelloWorld
+  return (
+    <div>
+      <input type="text" onKeyPress={handleChange} onKeyUp={stop} />
+      {status ? <p>{status}</p> : null}
+    </div>
+  );
+};
+
+export default HelloWorld;
