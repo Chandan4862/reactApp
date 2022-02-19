@@ -1,11 +1,16 @@
-import HelloWorld from './components/HelloWorld'
+import store from './store';
+import { Provider } from 'react-redux';
+import Display from "./components/contacts/Display";
+import Add from './components/contacts/Add';
 
 function App() {
   return (
-    <div>
-      <h2>Let's get started!</h2>
-      <HelloWorld></HelloWorld>
-    </div>
+    <Provider store={store}>
+      <div className='center'>
+       <Add/>
+       <Display></Display>
+      </div>
+    </Provider>
   );
 }
 export default App;

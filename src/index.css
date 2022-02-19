@@ -13,3 +13,9 @@ body {
   background-color: #e6e1e1;
 }
 
+
+.center {
+  margin:auto;
+  text-align: center;
+}
+
