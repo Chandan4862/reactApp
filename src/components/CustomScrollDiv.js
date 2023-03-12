@@ -9,6 +9,7 @@ export default function CustomScrollDiv({ children, className, ...restProps }) {
   const [scrollBoxTop, setScrollBoxTop] = useState(0);
   const [lastScrollThumbPosition, setScrollThumbPosition] = useState(0);
   const [isDragging, setDragging] = useState(false);
+  const [scrollWidth, setScrollWidth] = useState('10px');
 
   const handleMouseOver = useCallback(() => {
     !hovering && setHovering(true);
@@ -114,17 +115,18 @@ export default function CustomScrollDiv({ children, className, ...restProps }) {
     >
       <div
         ref={scrollHostRef}
-        className={`scrollhost ${className}`}
+        className={`scrollhost`}
         {...restProps}
       >
         {children}
       </div>
-      <div className={"scroll-bar"} style={{ opacity: hovering ? 1 : 0 }}>
+      <div className={"scroll-bar"} style={{ opacity: hovering ? 1 : 0, width: scrollWidth }}>
         <div
           className={"scroll-thumb"}
-          style={{ height: scrollBoxHeight, top: scrollBoxTop }}
+          style={{ height: scrollBoxHeight, top: scrollBoxTop, width: scrollWidth }}
           onMouseDown={handleScrollThumbMouseDown}
-        />
+          onMouseOver={()=>{setScrollWidth('15px')}}
+          onMouseOut={()=>{setScrollWidth('10px')}}        />
       </div>
     </div>
   );
